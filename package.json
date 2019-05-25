@@ -1,0 +1,25 @@
+{
+  "name": "brain",
+  "version": "1.0.0",
+  "description": "",
+  "main": "brain.js",
+  "dependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "brain.js": "^1.6.1",
+    "live-server": "^1.2.1",
+    "webpack": "^4.32.2",
+    "webpack-cli": "^3.3.2",
+    "webpack-dev-server": "^3.4.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "build": "webpack",
+    "dev-server": "webpack-dev-server"
+  },
+  "author": "Jakub Kulaszewicz",
+  "license": "MIT"
+}
