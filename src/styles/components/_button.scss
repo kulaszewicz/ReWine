@@ -1,0 +1,13 @@
+.big-button {
+  background: $dark-purple;
+  border: none;
+  border-bottom: .6rem solid darken($dark-purple, 10%);
+  color: $orange;
+  font-weight: bold;
+  font-size: $l-size;
+  margin-bottom: $m-size;
+  margin-top: $m-size;
+  padding: 2.4rem;
+  width: 100%;
+  outline: none;
+}

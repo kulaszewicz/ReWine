@@ -1,0 +1,23 @@
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background: $dark-red;
+  font-family: 'Marck Script', cursive;
+  font-size: $m-size;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: default;
+}
+
+a{
+  outline: none;
+  text-decoration: none;
+  cursor: pointer;
+}

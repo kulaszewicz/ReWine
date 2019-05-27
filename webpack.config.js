@@ -3,8 +3,9 @@
 const path = require('path');
 
 
+
 module.exports = {
-    entry: './src/brain.js',
+    entry: './src/rewine.js',
     output: {
         path: path.join(__dirname, 'public'), //absolute path to public
         filename: "bundle.js"
@@ -22,11 +23,25 @@ module.exports = {
                 'css-loader',
                 'sass-loader'
             ]
-        }]
+        }, {
+            test:  /\.(png|svg|jpg|gif)$/,
+            use: [
+                'file-loader'
+            ]
+        }
+        ]
     },
     devtool: "cheap-module-eval-source-map",
 
     devServer: {
         contentBase: path.join(__dirname, 'public')
+    },
+
+    externals: {
+        fs: require('fs'),
+    },
+
+    node: {
+        fs: "empty"
     }
 };
