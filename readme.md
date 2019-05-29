@@ -15,7 +15,7 @@ _Hello, I would like to introduce
  determine the quality of your 
  wine.
  All you need to do is complete 
- the form below and see the results.
+ the form and see the results.
  The neural network was created with the help of Brain.js library and Wine dataset that was borrowed from
  archive.ics.uci.edu/ml/datasets._
  
