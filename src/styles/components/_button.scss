@@ -11,3 +11,12 @@
   width: 100%;
   outline: none;
 }
+
+.button {
+  background: $orange;
+  border: none;
+  border-bottom: .3rem solid darken($orange, 10%);
+  color: $dark-purple;
+  font-weight: 500;
+  padding: $s-size;
+}

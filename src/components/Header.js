@@ -4,8 +4,8 @@ import logo from '../resources/wine-bottle.png'
 const Header = (props) =>  (
     <div className={"header"}>
         <ul className="header__main-nav">
-            <li><a>About</a></li>
-            <li><a href="https://github.com/kulaszewicz" target="_blank">Github</a></li>
+            <li><a onClick={(e) => {props.handleToggleModal('about')}}>About</a></li>
+            <li><a href="https://github.com/kulaszewicz/ReWine" target="_blank">Github</a></li>
         </ul>
         <div className={"container"}>
             <h1 className={"header__title"}>{props.title}  <img className={"header__logo"} src={logo}/> </h1>

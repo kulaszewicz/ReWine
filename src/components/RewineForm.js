@@ -1,33 +1,33 @@
 import React from 'react';
-import * as fs from 'fs';
+//import * as fs from 'fs';
 
 import FormInput from './FormInput'
 import Action from './Action'
 
-const fs = require('fs');
+//const fs = require('fs');
 
-const raw = fs.readFileSync('./src/resources/winequality-red.csv', 'utf8').split('\n');
-const headers = raw[0].split(';').map(header => header.replace(/"/g, ''));
-
-const data = raw.
-slice(1).
-map(line => line.split(';').
-reduce((cur, v, i) => {
-    // Ensure that numberic values are between 0 and 1
-    // Admittedly this is a bit hacky, and I'd love to hear how machine
-    // learning experts handle this.
-    if (headers[i].includes('sulfur') || headers[i].includes('sugar')) {
-        cur[headers[i]] = parseFloat(v) / 1000;
-    } else if (headers[i].includes('alcohol')) {
-        cur[headers[i]] = parseFloat(v) / 100;
-    } else {
-        // Quality will be 0.1-1 rather than 1-10
-        cur[headers[i]] = parseFloat(v) / 10;
-    }
-    return cur;
-}, {}));
-
-console.log(data);
+//const raw = fs.readFileSync('./src/resources/winequality-red.csv', 'utf8').split('\n');
+// const headers = raw[0].split(';').map(header => header.replace(/"/g, ''));
+//
+// const data = raw.
+// slice(1).
+// map(line => line.split(';').
+// reduce((cur, v, i) => {
+//     // Ensure that numberic values are between 0 and 1
+//     // Admittedly this is a bit hacky, and I'd love to hear how machine
+//     // learning experts handle this.
+//     if (headers[i].includes('sulfur') || headers[i].includes('sugar')) {
+//         cur[headers[i]] = parseFloat(v) / 1000;
+//     } else if (headers[i].includes('alcohol')) {
+//         cur[headers[i]] = parseFloat(v) / 100;
+//     } else {
+//         // Quality will be 0.1-1 rather than 1-10
+//         cur[headers[i]] = parseFloat(v) / 10;
+//     }
+//     return cur;
+// }, {}));
+//
+// console.log(data);
 
 
 export default class RewineForm extends React.Component{
