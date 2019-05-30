@@ -3,6 +3,7 @@ import React from 'react';
 
 import FormInput from './FormInput'
 import Action from './Action'
+import rewineImage from '../resources/rewine.png'
 
 //const fs = require('fs');
 
@@ -100,8 +101,10 @@ export default class RewineForm extends React.Component{
         this.setState(() =>({alcohol: target}));
     };
 
+
     handleActionSubmit = () => {
         console.log(this.state);
+        this.props.handleToggleModal('result');
     };
 
     render() {
@@ -112,6 +115,8 @@ export default class RewineForm extends React.Component{
                         <div className={"form-header"}>
                             <h3 className={"form-header__title"}>Complete the form with your wine details!</h3>
                         </div>
+
+                        <img className={'rewine-image'} id={'rewine-image'} src={rewineImage} />
                         <FormInput
                             handleChange = {this.handleAcidityChange}
                         />

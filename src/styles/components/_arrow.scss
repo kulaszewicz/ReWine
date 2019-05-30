@@ -1,0 +1,26 @@
+.arrow {
+  vertical-align: center;
+  width: 10%;
+  float: left;
+  display: block;
+  position: relative;
+  margin-top: 2%;
+  margin-left: 5%;
+  animation: pulse 3s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.5;
+    margin-left: 5%;
+  }
+  50% {
+    opacity: 1;
+    margin-left: 8%;
+  }
+
+  100% {
+    opacity: 0.5;
+    margin-left: 5%;
+  }
+}

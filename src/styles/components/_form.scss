@@ -4,7 +4,11 @@
   padding: $s-size;
 }
 
-
+.rewine-image {
+  position: absolute;
+  right: 7%;
+  top: 70%;
+}
 
 // Form header
 
@@ -39,6 +43,8 @@
 }
 
 .form-input__input {
+  width: 60%;
+  box-sizing: border-box;
   text-align: center;
   background: $dark-purple;
   border: none;
@@ -46,9 +52,17 @@
   border-bottom: .3rem solid darken($dark-purple, 10%);
   flex-grow: 1;
   display: block;
-  margin: 0 auto;
+  margin: 2% 20%;
   //margin-right: $s-size;
   padding: $xs-size;
   outline: none;
 
+}
+
+.form-input-bundle {
+  float: left;
+  vertical-align: middle;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
 }

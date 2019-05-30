@@ -7,9 +7,8 @@
   align-items: center;
   display: flex;
   justify-content: center;
-  transition: opacity 200ms ease-in-out;
+  transition: opacity 400ms ease-in-out;
 }
-
 
 .ReactModalPortal .ReactModal__Overlay--after-open {
   opacity: 1;
@@ -19,6 +18,7 @@
 .ReactModalPortal .ReactModal__Overlay--before-close {
   opacity: 0;
 }
+
 
 .modal {
   background: $dark-purple;
@@ -40,4 +40,74 @@
   font-weight: 300;
   margin: 0 0 $l-size 0;
   word-break: break-all;
+}
+
+
+.modal-result {
+  max-width: 50rem;
+}
+
+.modal-result .modal__title {
+  font-size: 4.8rem;
+}
+
+.modal__title__score {
+  width: 50%;
+  float: left;
+  font-size: 10.8rem;
+  margin-top: 3.2rem;
+}
+.modal__score_circle {
+  vertical-align: center;
+  width: 40%;
+  margin-left: 5%;
+  float: left;
+  display: block;
+  position: relative;
+}
+
+.modal__bundle {
+  float: left;
+  vertical-align: middle;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.modal__score_result {
+  opacity: 0;
+  position: absolute;
+  left: 62%;
+  font-size: 12.8rem;
+  margin-top: 2.2rem;
+}
+
+.modal__score_name {
+  opacity: 0;
+  font-size: 4.8rem;
+  margin-top: $s-size;
+}
+
+.button-result {
+  left: 0;
+  top: 67%;
+  position: absolute;
+  float: left;
+}
+
+.scoreAnimation {
+  animation: fadeIn 1s linear;
+}
+
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
 }
