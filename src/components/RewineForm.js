@@ -4,6 +4,7 @@ import React from 'react';
 import FormInput from './FormInput'
 import Action from './Action'
 import rewineImage from '../resources/rewine.png'
+import glassImage from '../resources/glass.png'
 
 //const fs = require('fs');
 
@@ -117,6 +118,7 @@ export default class RewineForm extends React.Component{
                         </div>
 
                         <img className={'rewine-image'} id={'rewine-image'} src={rewineImage} />
+                        <img className={'glass-image'} id={'glass-image'} src={glassImage} />
                         <FormInput
                             handleChange = {this.handleAcidityChange}
                         />

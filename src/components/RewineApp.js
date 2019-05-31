@@ -44,8 +44,13 @@ export default class RewineApp extends React.Component {
 
     };
 
+    handleFocus = () => {
+        document.getElementById('acidity').focus();
+
+    };
+
     componentDidMount() {
-        //window.addEventListener('wheel', this.handleBottleAnimation);
+       this.handleFocus();
     };
 
 

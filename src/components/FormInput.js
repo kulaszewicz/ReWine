@@ -33,6 +33,7 @@ export default class FormInput extends React.Component {
                         type={"text"} name={this.props.inputName}
                         placeholder={this.props.suggestedValue}
                         onChange={this.props.handleChange}
+                        id={this.props.inputName}
                     />
                 </div>
             </div>
