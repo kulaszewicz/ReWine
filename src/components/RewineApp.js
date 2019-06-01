@@ -1,17 +1,20 @@
 import React from "react";
-import * as fs from 'fs';
 
+import dataset from '../resources/winequality'
 import Header from './Header'
 import RewineForm from './RewineForm'
 import AboutModal from './modals/AboutModal'
 import ResultModal from './modals/ResultModal'
+import * as Reviewer from './Reviewer'
 
-let currentTop;
+
 
 export default class RewineApp extends React.Component {
     state = {
         aboutModal: false,
-        resultModal: false
+        resultModal: false,
+        quality: undefined,
+        neuralNetwork: undefined
     };
 
 
@@ -21,14 +24,6 @@ export default class RewineApp extends React.Component {
       }))
     };
 
-    handleBottleAnimation = () => {
-        let y = window.scrollY;
-        let bottle = document.getElementById('rewine-image');
-        const startTop = 40;
-        currentTop = startTop + (y/15);
-        console.log(currentTop, y);
-        bottle.style.top =  `${currentTop}%`;
-    };
 
     handleScoreAnimation = () => {
        const score = document.getElementById('scoreNumber');
@@ -44,6 +39,20 @@ export default class RewineApp extends React.Component {
 
     };
 
+    handleInitNetwork = () => {
+        const trainingData = Reviewer.handleTransformDataSet(dataset);
+        const net = Reviewer.handleSetNeuralNetwork(trainingData);
+        this.setState(() => ({
+           neuralNetwork : net
+        }))
+    };
+
+    handleSetQuality = (quality) => {
+        this.setState({
+            quality: (quality*10).toFixed(1)
+        })
+    };
+
     handleFocus = () => {
         document.getElementById('acidity').focus();
 
@@ -51,6 +60,7 @@ export default class RewineApp extends React.Component {
 
     componentDidMount() {
        this.handleFocus();
+       this.handleInitNetwork()
     };
 
 
@@ -66,7 +76,9 @@ export default class RewineApp extends React.Component {
 
                 <RewineForm
                     handleToggleModal = {this.handleToggleModal}
-
+                    quality = {this.state.quality}
+                    handleSetQuality = {this.handleSetQuality}
+                    neuralNetwork = {this.state.neuralNetwork}
                 />
 
                 <AboutModal
@@ -78,6 +90,7 @@ export default class RewineApp extends React.Component {
                     handleScoreAnimation = {this.handleScoreAnimation}
                     handleToggleModal = {this.handleToggleModal}
                     resultModal = {this.state.resultModal}
+                    score = {this.state.quality}
                 />
             </div>
         )

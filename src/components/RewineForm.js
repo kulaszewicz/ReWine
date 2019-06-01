@@ -1,36 +1,11 @@
 import React from 'react';
-//import * as fs from 'fs';
 
+import dataset from '../resources/winequality'
 import FormInput from './FormInput'
 import Action from './Action'
 import rewineImage from '../resources/rewine.png'
 import glassImage from '../resources/glass.png'
-
-//const fs = require('fs');
-
-//const raw = fs.readFileSync('./src/resources/winequality-red.csv', 'utf8').split('\n');
-// const headers = raw[0].split(';').map(header => header.replace(/"/g, ''));
-//
-// const data = raw.
-// slice(1).
-// map(line => line.split(';').
-// reduce((cur, v, i) => {
-//     // Ensure that numberic values are between 0 and 1
-//     // Admittedly this is a bit hacky, and I'd love to hear how machine
-//     // learning experts handle this.
-//     if (headers[i].includes('sulfur') || headers[i].includes('sugar')) {
-//         cur[headers[i]] = parseFloat(v) / 1000;
-//     } else if (headers[i].includes('alcohol')) {
-//         cur[headers[i]] = parseFloat(v) / 100;
-//     } else {
-//         // Quality will be 0.1-1 rather than 1-10
-//         cur[headers[i]] = parseFloat(v) / 10;
-//     }
-//     return cur;
-// }, {}));
-//
-// console.log(data);
-
+import * as Reviewer from './Reviewer'
 
 export default class RewineForm extends React.Component{
     state = {
@@ -49,64 +24,76 @@ export default class RewineForm extends React.Component{
 
     handleAcidityChange = (e) => {
         const target = parseFloat(e.target.value);
-        this.setState(() =>({acidity: target}));
+        this.setState(() =>({acidity: target/100}));
     };
 
     handleVolatileChange = (e) => {
         const target = parseFloat(e.target.value);
-      this.setState(() =>({volatile: target}));
+      this.setState(() =>({volatile: target/10}));
     };
 
     handleAcidChange = (e) => {
         const target = parseFloat(e.target.value);
-        this.setState(() =>({acid: target}));
+        this.setState(() =>({acid: target/10}));
     };
 
     handleSugarChange = (e) => {
         const target = parseFloat(e.target.value);
-        this.setState(() =>({sugar: target}));
+        this.setState(() =>({sugar: target/1000}));
     };
 
     handleChloridesChange = (e) => {
         const target = parseFloat(e.target.value);
-        this.setState(() =>({chlorides: target}));
+        this.setState(() =>({chlorides: target/10}));
     };
 
     handleSulfurFreeChange = (e) => {
         const target = parseFloat(e.target.value);
-        this.setState(() =>({sulfur_free: target}));
+        this.setState(() =>({sulfur_free: target/1000}));
     };
 
     handleSulfurTotalChange = (e) => {
         const target = parseFloat(e.target.value);
-        this.setState(() =>({sulfur_total: target}));
+        this.setState(() =>({sulfur_total: target/1000}));
     };
 
     handleDensityChange = (e) => {
         const target = parseFloat(e.target.value);
-        this.setState(() =>({density: target}));
+        this.setState(() =>({density: target/10}));
     };
 
     handlePhChange = (e) => {
         const target = parseFloat(e.target.value);
-        this.setState(() =>({ph: target}));
+        this.setState(() =>({ph: target/10}));
     };
 
     handleSulphatesChange = (e) => {
         const target = parseFloat(e.target.value);
-        this.setState(() =>({sulphates: target}));
+        this.setState(() =>({sulphates: target/10}));
     };
 
     handleAlcoholChange = (e) => {
         const target = parseFloat(e.target.value);
-        this.setState(() =>({alcohol: target}));
+        this.setState(() =>({alcohol: target/100}));
     };
 
 
     handleActionSubmit = () => {
-        console.log(this.state);
+        this.handleSetScore();
+
+
         this.props.handleToggleModal('result');
     };
+
+    handleSetScore = () => {
+        console.log(this.state);
+        const trainingData = Reviewer.handleTransformDataSet(dataset);
+        Reviewer.handleRunNetwork(this.props.neuralNetwork);
+    };
+
+    componentDidMount() {
+
+    }
 
     render() {
         return (
