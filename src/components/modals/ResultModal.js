@@ -25,7 +25,7 @@ export default class ResultModal extends React.Component {
                     <img className={"modal__score_circle"} src={circle}/>
                     <div className={'modal__score_result'} id={'scoreNumber'}>{this.props.score}</div>
                     <div style={this.props.scoreTitleStyle} className={`modal__score_name`} id={'scoreTitle'}> {this.props.scoreTitle}</div>
-                    <button className={"button button-result"}>Stats for geeks</button>
+                    <button onClick={this.props.handleGeekButton} className={"button button-result"}>Stats for geeks</button>
                 </div>
                 <button className={"button"} onClick={(e) => {this.props.handleToggleModal('result')}}>Close</button>
                 <button className={"button"} onClick={(e) => {this.props.handleToggleModal('result')}}>New</button>

@@ -80,15 +80,13 @@ export default class RewineForm extends React.Component{
 
     handleActionSubmit = () => {
         this.handleSetScore();
-
-
         this.props.handleToggleModal('result');
     };
 
+
     handleSetScore = () => {
-        console.log(this.state);
-        const trainingData = Reviewer.handleTransformDataSet(dataset);
-        Reviewer.handleRunNetwork(this.props.neuralNetwork);
+        const quality = (Reviewer.handleRunNetwork(this.props.neuralNetwork, this.state)).quality;
+        this.props.handleSetQuality(quality);
     };
 
     componentDidMount() {

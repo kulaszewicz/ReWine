@@ -14,7 +14,8 @@ export default class RewineApp extends React.Component {
         aboutModal: false,
         resultModal: false,
         quality: undefined,
-        neuralNetwork: undefined
+        neuralNetwork: undefined,
+        rating: [undefined, undefined]
     };
 
 
@@ -49,13 +50,41 @@ export default class RewineApp extends React.Component {
 
     handleSetQuality = (quality) => {
         this.setState({
-            quality: (quality*10).toFixed(1)
+            quality: parseFloat((quality*10).toFixed(1))
+        }, () =>{
+            this.handleSetRating()
         })
     };
 
     handleFocus = () => {
         document.getElementById('acidity').focus();
 
+    };
+
+
+    handleGeekButton = () => {
+        const trainingData = Reviewer.handleTransformDataSet(dataset);
+        Reviewer.handleStatsForGeeks(this.state.neuralNetwork, trainingData);
+    };
+
+    handleSetRating = () => {
+        const quality = this.state.quality;
+        let rating;
+
+        if (quality < 5.1) {
+            rating = ['Bad', {color:'#990000'}]
+        } else if (quality >= 5.1 && quality < 5.4) {
+            rating = ['Average', {color:'#ff9900'}]
+        } else if (quality >= 5.4 && quality < 5.7) {
+            rating = ['Above Average', {color:'#999966'}]
+        } else if (quality >= 5.7 && quality < 6) {
+            rating = ['Good', {color:'#99cc00'}]
+        } else if (quality >= 6 && quality < 7) {
+            rating = ['Very Good', {color:'#00cc99'}]
+        }
+        this.setState({
+            rating: rating
+        })
     };
 
     componentDidMount() {
@@ -91,6 +120,9 @@ export default class RewineApp extends React.Component {
                     handleToggleModal = {this.handleToggleModal}
                     resultModal = {this.state.resultModal}
                     score = {this.state.quality}
+                    scoreTitle = {this.state.rating[0]}
+                    scoreTitleStyle = {this.state.rating[1]}
+                    handleGeekButton = {this.handleGeekButton}
                 />
             </div>
         )

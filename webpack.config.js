@@ -3,7 +3,6 @@
 const path = require('path');
 
 
-
 module.exports = {
     entry: './src/rewine.js',
     output: {

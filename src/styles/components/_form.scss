@@ -15,6 +15,36 @@
   left: 7%;
   top: 90%;
 }
+
+@media only screen and (max-width: 1600px) {
+  .rewine-image {
+    position: absolute;
+    right: 1%;
+    top: 40%;
+  }
+
+  .glass-image{
+    position: absolute;
+    left: 1%;
+    top: 90%;
+  }
+}
+
+@media only screen and (max-width: 1300px) {
+  .rewine-image {
+    position: absolute;
+    right: 1%;
+    top: 40%;
+    width: 25%;
+  }
+
+  .glass-image{
+    position: absolute;
+    left: 1%;
+    top: 90%;
+    width: 25%;
+  }
+}
 // Form header
 
 .form-header {
