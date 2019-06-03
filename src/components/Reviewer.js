@@ -33,43 +33,45 @@ export const handleTransformDataSet = (dataset) =>  {
 
 export const handleSetNeuralNetwork = (trainingData) => {
 
-    const net = new Brain.NeuralNetwork({hiddenLayers: [3][3]});
+    const net = new Brain.NeuralNetwork({
+        hiddenLayers: [12],
+        iterations: 2000,
+        learningRate: 0.5
+    });
     const numTrainingData = 1000;
+
 
     const slicedData = trainingData.slice(0, numTrainingData);
 
-    net.train(slicedData, numTrainingData);
-    // console.log(slicedData);
-    // console.log(net.run({acid: 0.031,
-    //     acidity: 0.062,
-    //     alcohol: 0.093,
-    //     chlorides: 0.0088,
-    //     density: 0.0997,
-    //     ph: 0.346,
-    //     sugar: 0.0017,
-    //     sulfur_free: 0.015,
-    //     sulfur_total: 0.064,
-    //     sulphates: 0.079,
-    //     volatile: 0.063
-    // }));
 
+    net.train(slicedData, {
+        errorThresh: 0.005,
+        iterations: 20000,
+        log: true,
+        logPeriod: 1000,
+        learningRate: 0.01
+    });
+
+    console.log(net);
+    
     return net;
 
 };
 
- export const handleRunNetwork = (network, input) => {
+ export const handleRunNetwork = (network, input, data) => {
+     const numTrainingData = 1000;
+     //network.train(data, numTrainingData);
      return network.run(input);
  };
 
- export const handleStatsForGeeks = (network, data) => {
+ export const handleStatsForGeeks = (network, data, trainingProps) => {
      console.log(network);
      const numTrainingData = 100;
      let error = 0;
      for (let i = 0; i < 50; ++i) {
          const { quality } = network.run((data[numTrainingData + i].input));
          error += Math.abs(quality - data[numTrainingData + i].output.quality);
-         console.log(i, quality, data[numTrainingData + i].output.quality);
+         //console.log(i, quality, data[numTrainingData + i].output.quality);
      }
      console.log('Average error', error / 50);
-
  };

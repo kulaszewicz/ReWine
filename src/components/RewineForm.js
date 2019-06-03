@@ -85,7 +85,8 @@ export default class RewineForm extends React.Component{
 
 
     handleSetScore = () => {
-        const quality = (Reviewer.handleRunNetwork(this.props.neuralNetwork, this.state)).quality;
+        const data = Reviewer.handleTransformDataSet(dataset);
+        const quality = (Reviewer.handleRunNetwork(this.props.neuralNetwork, this.state, data)).quality;
         this.props.handleSetQuality(quality);
     };
 
