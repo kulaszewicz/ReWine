@@ -15,6 +15,7 @@ export default class RewineApp extends React.Component {
         resultModal: false,
         quality: undefined,
         neuralNetwork: undefined,
+        trainingProps: undefined,
         rating: [undefined, undefined]
     };
 
@@ -44,7 +45,7 @@ export default class RewineApp extends React.Component {
         const trainingData = Reviewer.handleTransformDataSet(dataset);
         const net = Reviewer.handleSetNeuralNetwork(trainingData);
         this.setState(() => ({
-           neuralNetwork : net
+           neuralNetwork : net,
         }))
     };
 
@@ -64,7 +65,7 @@ export default class RewineApp extends React.Component {
 
     handleGeekButton = () => {
         const trainingData = Reviewer.handleTransformDataSet(dataset);
-        Reviewer.handleStatsForGeeks(this.state.neuralNetwork, trainingData);
+        Reviewer.handleStatsForGeeks(this.state.neuralNetwork, trainingData, this.state.trainingProps);
     };
 
     handleSetRating = () => {
@@ -73,13 +74,13 @@ export default class RewineApp extends React.Component {
 
         if (quality < 5.1) {
             rating = ['Bad', {color:'#990000'}]
-        } else if (quality >= 5.1 && quality < 5.4) {
+        } else if (quality >= 5.1 && quality < 5.7) {
             rating = ['Average', {color:'#ff9900'}]
-        } else if (quality >= 5.4 && quality < 5.7) {
-            rating = ['Above Average', {color:'#999966'}]
         } else if (quality >= 5.7 && quality < 6) {
+            rating = ['Above Average', {color:'#999966'}]
+        } else if (quality >= 6 && quality < 6.4) {
             rating = ['Good', {color:'#99cc00'}]
-        } else if (quality >= 6 && quality < 7) {
+        } else if (quality >= 6.4 && quality < 7) {
             rating = ['Very Good', {color:'#00cc99'}]
         }
         this.setState({
