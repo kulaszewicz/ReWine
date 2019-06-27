@@ -19,6 +19,8 @@ _Hello, I would like to introduce
  The neural network was created with the help of Brain.js library and Wine dataset that was borrowed from
  archive.ics.uci.edu/ml/datasets._
  
+ ![alt text](https://i.imgur.com/469enCA.png)
+ 
  ## Setup
  
  Perquisites:
